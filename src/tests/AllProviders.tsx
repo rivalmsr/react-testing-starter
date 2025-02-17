@@ -2,25 +2,28 @@ import { PropsWithChildren } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { CartProvider } from "../providers/CartProvider";
 import { Theme } from "@radix-ui/themes";
+import { LanguageProvider } from "../providers/language/LanguageProvider";
 
 const AllProviders = ({ children }: PropsWithChildren) => {
   const queryClient = new QueryClient({
-      defaultOptions: {
-        queries: {
-          retry: false
-        }
+    defaultOptions: {
+      queries: {
+        retry: false
       }
-    });
+    }
+  });
 
-    return(
-      <QueryClientProvider client={queryClient}>
-        <CartProvider>
+  return (
+    <QueryClientProvider client={queryClient}>
+      <CartProvider>
+        <LanguageProvider language="en">
           <Theme>
-            { children}
+            {children}
           </Theme>
-        </CartProvider>
-      </QueryClientProvider>
-    );
+        </LanguageProvider>
+      </CartProvider>
+    </QueryClientProvider>
+  );
 }
 
 export default AllProviders;
