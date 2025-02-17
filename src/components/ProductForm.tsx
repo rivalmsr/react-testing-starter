@@ -10,6 +10,7 @@ import {
   productFormSchema,
 } from "../validationSchemas/productSchema";
 import ErrorMessage from "./ErrorMessage";
+import { delay } from "msw";
 
 interface Props {
   product?: Product;
@@ -18,7 +19,7 @@ interface Props {
 
 const ProductForm = ({ product, onSubmit }: Props) => {
   const { data: categories, isLoading } = useCategories();
-  const [isSubmitting, setSubmitting] = useState(true);
+  const [isSubmitting, setSubmitting] = useState(false);
 
   const {
     register,
@@ -37,11 +38,13 @@ const ProductForm = ({ product, onSubmit }: Props) => {
       name="product"
       onSubmit={handleSubmit(async (formData) => {
         try {
+          console.log('here 0')
           setSubmitting(true);
           await onSubmit(formData);
-        } catch (error) {
+          // await delay(1000); } catch (error) {
           toast.error("An unexpected error occurred");
         } finally {
+          console.log('here 1')
           setSubmitting(false);
         }
       })}
