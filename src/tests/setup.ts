@@ -7,6 +7,9 @@ beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
+// mocking auth0 for serveral suite case
+vi.mock('@auth0/auth0-react');
+
 global.ResizeObserver = ResizeObserver;
 
 window.HTMLElement.prototype.scrollIntoView = vi.fn();
