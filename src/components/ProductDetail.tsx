@@ -4,12 +4,12 @@ import { Product } from "../entities";
 
 const ProductDetail = ({ productId }: { productId: number }) => {
 
-  const {data: product, isLoading, error} = useQuery<Product, Error>({
+  const { data: product, isLoading, error } = useQuery<Product, Error>({
     queryKey: ['products', productId],
     queryFn: () => axios.get<Product>('/products/' + productId).then(resp => resp.data),
   })
 
-  if(!productId) return <div>Invalid productId</div>
+  if (!productId) return <div>Invalid productId</div>
 
   if (isLoading) return <div>Loading...</div>;
 

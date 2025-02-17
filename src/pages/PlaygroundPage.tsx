@@ -1,4 +1,4 @@
-import ProductImageGallery from "../components/ProductImageGallery";
+import CategoryList from "../components/CategoryList";
 
 const PlaygroundPage = () => {
   const imageUrls: string[] = [
@@ -6,7 +6,9 @@ const PlaygroundPage = () => {
     'https://dummyimage.com/400x300/00ff00/000',
   ]
 
-  return <ProductImageGallery imageUrls={imageUrls} />
+  // return <ProductImageGallery imageUrls={imageUrls} />
+  //return <ProductForm onSubmit={(value) => console.log("form: ", value)} />
+  return <CategoryList />
 };
 
 export default PlaygroundPage;
